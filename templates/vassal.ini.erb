@@ -2,7 +2,7 @@
 chdir=<%= @chdir %>
 wsgi-file=<%= @wsgi_file %>
 virtualenv=<%= @virtualenv %>
-socket=127.0.0.1:<%= @port %>
+socket=/tmp/<%= @title %>.sock
 daemonize=/var/log/uwsgi/<%= @title %>.log
 processes=<%= @processes %>
 master=<%= @master %>

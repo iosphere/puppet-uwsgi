@@ -2,9 +2,9 @@
  # /etc/init.d/uwsgi
  #
 
- daemon=/usr/local/bin/uwsgi
+ daemon=/usr/bin/uwsgi
  pid=/var/run/uwsgi.pid
- args="--uid web --logdate --die-on-term --emperor /etc/uwsgi/apps-enabled/ --logto  /var/log/uwsgi/main.log --pidfile $pid"
+ args="--uid www-data --gid www-data --logdate --die-on-term --emperor /etc/uwsgi/apps-enabled/ --logto  /var/log/uwsgi/main.log --pidfile $pid"
 
  # Carry out specific functions when asked to by the system
  case "$1" in

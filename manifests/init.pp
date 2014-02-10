@@ -10,12 +10,16 @@ class uwsgi {
 
     file { ['/etc/uwsgi', '/etc/uwsgi/apps-enabled']:
         ensure  => 'directory',
-        require => Package['uwsgi']
+        owner   => 'www-data',
+        group   => 'www-data',
+        require => Package['uwsgi'],
     }
 
     file { '/var/log/uwsgi':
         ensure  => 'directory',
-        require => Package['uwsgi']
+        owner   => 'www-data',
+        group   => 'www-data',
+        require => Package['uwsgi'],
     }
 
     file {'/etc/init.d/uwsgi':
