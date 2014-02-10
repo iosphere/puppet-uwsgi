@@ -5,7 +5,6 @@ define uwsgi::vassal (
   $chdir,
   $virtualenv,
   $wsgi_file,
-  $port,
   $processes=1,
   $master=true,
   $vacuum=true,
@@ -15,9 +14,10 @@ define uwsgi::vassal (
   file {"${title}.ini":
     ensure  => 'present',
     path    => "/etc/uwsgi/apps-enabled/${title}.ini",
-    owner   => root,
-    group   => root,
+    owner   => www-data,
+    group   => www-data,
     mode    => '0640',
     content => template("${module_name}/vassal.ini.erb"),
+    notify  => Class['uwsgi::service'],
   }
 }

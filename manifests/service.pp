@@ -5,8 +5,9 @@ class uwsgi::service {
   service {'uwsgi':
     ensure     => running,
     enable     => true,
-    hasstatus  => true,
-    hasrestart => true,
-    require    => Package['uwsgi']
+    status     => 'ps -p $(cat /var/run/uwsgi.pid) &>/dev/null',
+    hasstatus  => false,
+    hasrestart => false,
+    require    => Package['uwsgi'],
   }
 }
