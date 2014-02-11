@@ -6,6 +6,7 @@ class uwsgi {
     package { 'uwsgi':
         ensure   => present,
         provider => 'pip',
+        require => Package['python-pip'],
     }
 
     file { ['/etc/uwsgi', '/etc/uwsgi/apps-enabled']:
