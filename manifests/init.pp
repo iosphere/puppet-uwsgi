@@ -4,7 +4,7 @@ class uwsgi {
     include uwsgi::service
 
     package { 'uwsgi':
-        ensure   => installed,
+        ensure   => present,
         provider => 'pip',
     }
 
@@ -22,9 +22,9 @@ class uwsgi {
         require => Package['uwsgi'],
     }
 
-    file {'/etc/init.d/uwsgi':
+    file {'/etc/init/uwsgi.conf':
         ensure  => 'present',
-        content => template("${module_name}/initd.erb"),
+        source  => 'puppet:///modules/uwsgi/uwsgi-upstart.conf',
         owner   => root,
         group   => root,
         mode    => '0755',
